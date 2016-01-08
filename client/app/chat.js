@@ -17,13 +17,17 @@ $('#playerControls').hide();
 
 $('#search-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
-  console.log('this is the click: ', idVal);
   socket.emit('url submit', idVal);
 });
 
 socket.on('url submit', function(url) {
   $('#player').remove();
   $('.videoPlayer').append('<div id="player">');
+function urlInjectFunc(url){
+  socket.emit('url submit', url);
+}
+
+socket.on('url submit', function(url){
   var player = new YT.Player('player', {
     videoId : url,
     playerVars: { 
@@ -32,10 +36,8 @@ socket.on('url submit', function(url) {
       'disablekb': 0
     }
   });
-  console.log("first");
   socket.player = player;
-  socket.url = url;
-  console.log(player);
+  socket.url = url;;
 });
 
 //play video event
@@ -157,7 +159,22 @@ socket.on('update-people', function(people) {
 //on event, add messages to chat box
 socket.on('chat message', function(who,msg) {
   if (ready) {
-    $('#messages').append($('<li>').html('<strong>' + who + ': ' + '</strong>' + msg));
+    var linkifiedMsg = anchorme.js(msg,{"class":"urlInject"});
+    var start = msg.indexOf('www.youtube.com/watch?v=')+24;
+
+    if(start){
+      console.log(start);
+      var youtubeUrlId = msg.substr(start, 11);
+      console.log(youtubeUrlId, "check this");
+    }
+
+    $('#messages').append($('<li>').html('<strong>' + who + ': ' + '</strong>' + linkifiedMsg));
+    var findHref = $('li').last().children().first().next().attr('class');
+    
+    $('.'+findHref).click(function(e){
+      e.preventDefault();
+      this.href = urlInjectFunc(youtubeUrlId);
+    });
   }
 });
 
