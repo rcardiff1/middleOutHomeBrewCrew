@@ -14,7 +14,7 @@ $('#playerControls').hide();
 $('#url').prop('disabled',true);
 $('#urlSub').prop('disabled',true);
 
-$('.results').click(function(event){
+$('#search-results').click(function(event){
   var idVal = $(event.target).parent().attr('id');
   socket.emit('url submit', idVal);
 });
@@ -26,6 +26,8 @@ function urlInjectFunc(url){
 
 
 socket.on('url submit', function(url){
+  $('#player').remove();
+  $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
     videoId : url,
     playerVars: { 
@@ -36,6 +38,7 @@ socket.on('url submit', function(url){
   });
   socket.player = player;
   socket.url = url;
+  console.log(player);
 });
 
 //play video event
