@@ -7,14 +7,19 @@
   </head>
 
   <body id='indexBody'>
-    <!-- navbar -->
+
+    <script type="text/javascript">
+      if (window.location.hash == '#_=_') {
+          window.location.hash = '';
+      }
+    </script>
+
     <nav class="navbar navbar-inverse navbar-fixed-top" style='margin: 0'>
       <div class="container-fluid">
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+            <li class="active"><a href="/login">Logout</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <a class="navbar-brand" href="/home">
@@ -81,6 +86,7 @@
         <form class="form-inline" id='joinChat'>
           <h4>Enter a username:</h4>
           <input type="text" class="input-small" placeholder="Your name" id="name">
+
           <input type="button" name="join" id="join" value="Join">
         </form>
       </div>
@@ -96,8 +102,6 @@
 
       </div> <!-- message div -->
     </div> <!-- row -->
-
-
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="./lib/javascripts/jquery.tipsy.js"></script>
@@ -106,7 +110,6 @@
     <script src="env/config.js"></script>
     <script src="app/app.js"></script>
     <script src='app/chat.js'></script>
-
 
   </body>
 </html>

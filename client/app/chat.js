@@ -5,14 +5,15 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+
 //doesn't allow users to interact w/ submissions until "signed in"
 $('#chatForm').hide();
 $('#room').hide();
 $('#name').focus();
 $('#player').hide();
 $('#playerControls').hide();
-$('#url').prop('disabled',true);
-$('#urlSub').prop('disabled',true);
+// $('#url').prop('disabled',true);
+// $('#urlSub').prop('disabled',true);
 
 $('#search-results').click(function(event){
   var idVal = $(event.target).parent().attr('id');
@@ -31,6 +32,7 @@ socket.on('url submit', function(url){
       'disablekb': 0
     }
   });
+  console.log("first");
   socket.player = player;
   socket.url = url;
   console.log(player);
@@ -49,11 +51,16 @@ socket.on('play video', function(){
 $('#pauseVid').on('click', function(){
   socket.emit('pause video');
 });
+
 socket.on('pause video', function(){
   socket.player.pauseVideo();
 });
 
+
+
 socket.on('new connection', function (){
+//this occurs before new player;
+console.log(!socket.player);
   if(!socket.player){
     return;
   }
@@ -65,6 +72,7 @@ socket.on('new connection', function (){
 
 socket.on('new connection res', function(obj) {
   var time = Math.floor(obj.time); 
+  console.log(time);
   setTimeout( 
     function(){
       var player = new YT.Player('player', { 
@@ -110,6 +118,7 @@ $('#join').click(function() {
 
 $('#name').keypress(function(e) {
   if (e.which == 13) {
+    //e.which is the keynumber
     var name = $('#name').val();
     if (name != '') {
       socket.emit('join', name);

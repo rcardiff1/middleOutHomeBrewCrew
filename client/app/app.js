@@ -46,7 +46,7 @@ function unMuteVideo() {
   if(socket.player) {
     socket.player.unMute();
     $('.mute').hide(); 
-  }  
+  }
 }
 
 $('#volume').change(function() {
