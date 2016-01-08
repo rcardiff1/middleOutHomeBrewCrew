@@ -38,6 +38,10 @@ $('#show-searched-results-btn,#show-saved-results-btn').click(function(){
 });
 
 // Movie Button Controls
+function saveToPlaylist(){
+
+}
+
 function muteVideo() {
   if(socket.player) {
     socket.player.mute();

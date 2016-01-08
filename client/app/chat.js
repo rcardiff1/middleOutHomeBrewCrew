@@ -1,10 +1,11 @@
-// Chat Socket
 var socket = io();
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+//declare a global for our playlist
+var clickedSong;
 
 //doesn't allow users to interact w/ submissions until "signed in"
 $('#chatForm').hide();
@@ -17,25 +18,42 @@ $('#playerControls').hide();
 
 $('#search-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
-  console.log('this is the click: ', idVal);
   socket.emit('url submit', idVal);
+
+  clickedSong = $(event.target).parent();
 });
 
-socket.on('url submit', function(url) {
+$('#saveToPlaylist').on('click', function() {
+  console.log('image', clickedSong.context.src);
+  console.log('clickedSong', clickedSong);
+  var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);  ;
+/************
+  // $('            ').append(playlistEntry);
+************/
+  console.log('clickedSong', playlistEntry);
+
+}); 
+// function appendPlaylist(videoId, videoImage, vidDescription) {
+//   var pics = $('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>').hide().fadeIn(4000); 
+//   $('#search-results').append(pics); 
+//   $('#'+videoId).tipsy();
+// }
+
+
+socket.on('url submit', function(idVal){
   $('#player').remove();
   $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
-    videoId : url,
+    videoId : idVal,
     playerVars: { 
       'autoplay': 0, 
       'controls': 0, 
       'disablekb': 0
     }
   });
-  console.log("first");
   socket.player = player;
-  socket.url = url;
-  console.log(player);
+  socket.url = idVal;
+  // console.log(player);
 });
 
 //play video event
