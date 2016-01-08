@@ -2,20 +2,21 @@ $(function() {
   $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
 });
 
+// ajax call to server for youtube api GET request
 function youtubeSearch(searchItem) {
   $.ajax({
     'url': "/searchYoutube",
     'type': 'GET',
     'data': {'searchItem': searchItem},
-    }).done( function(data) {
-      $('#search-results').empty();
-      $.each( data.items, function(i, item ) { 
-        var vidId = item.id.videoId;
-        var vidImage = item.snippet.thumbnails.medium.url; 
-        var vidDescription = ''+item.snippet.description.slice(0, 30)+'..';
-        appendVideoImage(vidId, vidImage, vidDescription);
-      });
+  }).done( function(data) {
+    $('#search-results').empty();
+    $.each( data.items, function(i, item ) { 
+      var vidId = item.id.videoId;
+      var vidImage = item.snippet.thumbnails.medium.url; 
+      var vidDescription = ''+item.snippet.description.slice(0, 30)+'..';
+      appendVideoImage(vidId, vidImage, vidDescription);
     });
+  });
 }
 
 
@@ -33,6 +34,7 @@ $('#search-btn').on('click', function(event) {
   youtubeSearch(searchVal);
 });
 
+// show hide search results & saved results container
 $('#saved-results-container').hide();
 $('#show-searched-results-btn,#show-saved-results-btn').click(function(){
     $('#search-results-container,#saved-results-container').toggle();

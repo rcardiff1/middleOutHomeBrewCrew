@@ -76,6 +76,11 @@ $('#saved-results').click(function(event) {
 
 socket.on('url submit', function(idVal){
   $('#player').remove();
+  // set timeOut for playing new video
+  $('#disable-functionality').addClass('disableDiv');
+  setTimeout(function() {
+    $('#disable-functionality').removeClass('disableDiv');
+  }, 3500);
   $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
     videoId : idVal,
