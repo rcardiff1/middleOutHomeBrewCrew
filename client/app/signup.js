@@ -1,30 +1,33 @@
-function userAjaxPost(userData) {
-  $.ajax({
-    method: "POST",
-    url: '/signup/export',
-    data: JSON.stringify({ userData : userData }),
-    contentType : 'application/json; charset=utf-8',
-    success: function(data){
-      console.log(data, "data in ajax");
-    }
-  });
-}
+//Currently not using due to facebook login. However holding on to files,
+//incase facebook crashes
 
-$('#userData').click(function(e){
-  e.preventDefault();
+// function userAjaxPost(userData) {
+//   $.ajax({
+//     method: "POST",
+//     url: '/signup/export',
+//     data: JSON.stringify({ userData : userData }),
+//     contentType : 'application/json; charset=utf-8',
+//     success: function(data){
+//       console.log(data, "data in ajax");
+//     }
+//   });
+// }
 
-  var name = $('#userName3');
-  var email = $('#inputEmail3');
-  var password = $('#inputPassword3');
-  var userData = { 'name': name.val(), 'email': email.val(), 'password': password.val() };
+// $('#userData').click(function(e) {
+//   e.preventDefault();
+
+//   var name = $('#userName3');
+//   var email = $('#inputEmail3');
+//   var password = $('#inputPassword3');
+//   var userData = { 'name': name.val(), 'email': email.val(), 'password': password.val() };
   
-  userAjaxPost(userData);
-  resetVals(name, email, password);
-});
+//   userAjaxPost(userData);
+//   resetVals(name, email, password);
+// });
 
 
-function resetVals(name, email, password){
-  name.val('');
-  email.val('');
-  password.val('');
-}
+// function resetVals(name, email, password) {
+//   name.val('');
+//   email.val('');
+//   password.val('');
+// }

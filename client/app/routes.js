@@ -3,7 +3,6 @@ var registerUser = require('./../../server/registerUser.js');
 
 module.exports = function(app, passport) {
 
-
   app.get('/', function(req, res) {
       res.sendFile(path.join(__dirname + './../index.html'));
   });
@@ -20,30 +19,25 @@ module.exports = function(app, passport) {
       res.sendFile(path.join(__dirname + './../signup.html'));
   });
 
-
   // app.get('/profile', isLoggedIn, function(req, res) {
-    
   // })
 
   //route for facebook authentication and login
   app.get('/auth/facebook', passport.authenticate('facebook'));
 
   app.get('/auth/facebook/callback', 
-    passport.authenticate('facebook', { failureRedirect : '/' }), function(req,res){
+    passport.authenticate('facebook', { failureRedirect : '/' }), function(req,res) {
   
-      var userName = req.session.passport.user.displayName;
-      var valId = req.session.passport.user.id;
-      valId = Number(valId);
+    var userName = req.session.passport.user.displayName;
+    var valId = req.session.passport.user.id;
+    valId = Number(valId);
 
-      console.log(userName, "userName");
-      console.log(valId, "valId this one");
+    savetoDb(userName, valId);
+    //if exists / go to home/
+    // else redirect to sign up/
+    // or save in database
 
-      savetoDb(userName, valId);
-      //if exists / go to home/
-      // else redirect to sign up/
-      // or save in database
-
-      res.redirect('/home');
+    res.redirect('/home');
     });
 
   app.get('/logout', function(req, res) {
@@ -56,16 +50,13 @@ module.exports = function(app, passport) {
       return next();
   }
 
-  function savetoDb(name, valId){
+  function savetoDb(name, valId) {
     var storeUser = registerUser.create.bind(registerUser);
 
     var userData = { 'name': name, 'valId' : valId };
 
-    console.log(userData);
     storeUser(userData);
-
   }
-
 
   // res.redirect('/');
 

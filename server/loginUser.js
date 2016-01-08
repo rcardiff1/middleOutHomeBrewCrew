@@ -1,9 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+//Currently not using due to facebook login, keeping incase of emergency
 
-var loginUser = new Schema({
-  name: String,
-  password: Number
-});
+// var mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('LoginUser', loginUser);
+// var loginUser = new Schema({
+//   name: String,
+//   password: Number
+// });
+
+// module.exports = mongoose.model('LoginUser', loginUser);

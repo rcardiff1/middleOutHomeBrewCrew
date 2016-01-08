@@ -15,13 +15,13 @@ $('#playerControls').hide();
 // $('#url').prop('disabled',true);
 // $('#urlSub').prop('disabled',true);
 
-$('#search-results').click(function(event){
+$('#search-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
   console.log('this is the click: ', idVal);
   socket.emit('url submit', idVal);
 });
 
-socket.on('url submit', function(url){
+socket.on('url submit', function(url) {
   $('#player').remove();
   $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
@@ -39,26 +39,26 @@ socket.on('url submit', function(url){
 });
 
 //play video event
-$('#playVid').on('click', function(){
+$('#playVid').on('click', function() {
   socket.emit('play video');
 });
-socket.on('play video', function(){
+socket.on('play video', function() {
   socket.player.playVideo();
   console.log(socket.player.getCurrentTime(), socket.url);
 });
 
 //pause video event
-$('#pauseVid').on('click', function(){
+$('#pauseVid').on('click', function() {
   socket.emit('pause video');
 });
 
-socket.on('pause video', function(){
+socket.on('pause video', function() {
   socket.player.pauseVideo();
 });
 
 
 
-socket.on('new connection', function (){
+socket.on('new connection', function () {
 //this occurs before new player;
 console.log(!socket.player);
   if(!socket.player){
@@ -93,7 +93,7 @@ socket.on('new connection res', function(obj) {
 //--------------
 
 //emit message to other sockets
-$('#chatForm').submit(function(){
+$('#chatForm').submit(function() {
   socket.emit('chat message', $('#m').val());
   $('#m').val('');
   return false;
@@ -154,7 +154,7 @@ socket.on('update-people', function(people) {
 });
 
 //on event, add messages to chat box
-socket.on('chat message', function(who,msg){
+socket.on('chat message', function(who,msg) {
   if (ready) {
     $('#messages').append($('<li>').html('<strong>' + who + ': ' + '</strong>' + msg));
   }

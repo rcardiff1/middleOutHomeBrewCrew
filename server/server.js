@@ -10,8 +10,6 @@ var YouTube = require('youtube-node');
 var youTube = new YouTube();
 var config = require('./env/config.js');
 
-
-
 var mongoose = require('mongoose');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
