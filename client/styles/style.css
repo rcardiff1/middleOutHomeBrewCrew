@@ -43,11 +43,11 @@
 }
 
 .videoPlayer {
-    width: 95.7%;
- height: 360px;
- margin-top: 10px;
- margin-bottom: 5px;
-    background-color: black;
+  width: 95.7%;
+  height: 360px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background-color: black;
 }
 
 .long{
@@ -65,18 +65,29 @@
  border: 1px solid #a91b0c ;
 }
 
+#search-input-container {
+  height: 50px;
+  width: 95.7%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  margin-top: 10%;
+  background-color: #fff;
+  border: 1px solid #a91b0c;
+}
+
 #youtubeSearchInput {
-    width: 75%;
- height: 30px;
+  width: 75%;
+  height: 30px;
 }
 
 #search-results-container {
-    height: 500px;
- width: 80%;
- margin-left: 10%;
- margin-top: 20%;
-    background-color: #fff;
-    border: 1px solid #a91b0c ;
+  height: 500px;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20%;
+  background-color: #fff;
+  border: 1px solid #a91b0c;
 }
 
 #search-results {
@@ -90,7 +101,14 @@
  margin-top: 6%;
 }
 
-   /* For mobile phones: */
+.line-break {
+  width: 95.7%;
+  border-bottom: 3px solid #a91b0c;
+  margin-bottom: 18px;
+  margin-top: 18px;
+}
+
+  /* For mobile phones: */
 @media only screen and (max-width: 900px) {
    [class*="col-"] {
        width: 100%;
