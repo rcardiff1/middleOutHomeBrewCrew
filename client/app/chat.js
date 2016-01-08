@@ -24,8 +24,17 @@ $('#search-results').click(function(event) {
 });
 
 $('#saveToPlaylist').on('click', function() {
-  var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
-  $('#saved-results').append(playlistEntry);
+  var songId = clickedSong.attr('id');
+  var alreadySavedSongs = $('#saved-results').children().attr('id');
+  
+  //check if clickedSong exists in playlist
+  if(songId !== alreadySavedSongs){
+    var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
+    $('#saved-results').append(playlistEntry);
+  } else {
+    alert('You\'ve already saved that song. Silly.' );
+  }
+
 }); 
 
 $('#saved-results').click(function(event) {
