@@ -20,7 +20,8 @@ function youtubeSearch(searchItem) {
 
 // append youtube song list to left-side container 
 function appendVideoImage(videoId, videoImage, vidDescription) {
-  $('#search-results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>'); 
+  var pics = $('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>').hide().fadeIn(4000); 
+  $('#search-results').append(pics); 
   $('#'+videoId).tipsy();
 }
 
