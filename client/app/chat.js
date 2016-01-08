@@ -20,19 +20,13 @@ $('#search-results').click(function(event) {
   socket.emit('url submit', idVal);
 });
 
-socket.on('url submit', function(url) {
 function urlInjectFunc(url){
   socket.emit('url submit', url);
 }
 
 socket.on('url submit', function(url){
-  $('#player').remove();
-  $('.videoPlayer').append('<div id="player">');
-function urlInjectFunc(url){
-  socket.emit('url submit', url);
-}
-
-socket.on('url submit', function(url){
+$('#player').remove();
+$('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
     videoId : url,
     playerVars: { 
@@ -68,7 +62,6 @@ socket.on('pause video', function() {
 
 socket.on('new connection', function () {
 //this occurs before new player;
-console.log(!socket.player);
   if(!socket.player){
     return;
   }

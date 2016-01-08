@@ -18,6 +18,7 @@ function youtubeSearch(searchItem) {
     });
 }
 
+
 // append youtube song list to left-side container 
 function appendVideoImage(videoId, videoImage, vidDescription) {
   console.log(vidDescription);
