@@ -49,6 +49,7 @@ app.get('/searchYoutube', function(req, res) {
       console.log(error);
     }
     else {
+      console.log(result);
       res.send(result);
     }
   });
