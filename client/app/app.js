@@ -27,8 +27,8 @@ function youtubeSearch(searchItem) {
 
 // create song list from youtube search 
 function appendVideoImage (videoId, videoImage, vidDescription) {
-  $('.results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>');
-  $('#'+videoId).tipsy();
+  $('.results').append('<p id="' + videoId + '"><img class="videoImg" src="' + videoImage +'" original-title="'+vidDescription+'" height="70"></p>');
+  $('.videoImg').tipsy();
 }
 
 
