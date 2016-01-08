@@ -24,20 +24,15 @@ $('#search-results').click(function(event) {
 });
 
 $('#saveToPlaylist').on('click', function() {
-  console.log('image', clickedSong.context.src);
-  console.log('clickedSong', clickedSong);
   var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
-/***********/
   $('#saved-results').append(playlistEntry);
-/***********/
-  console.log('clickedSong', playlistEntry);
-
 }); 
-// function appendPlaylist(videoId, videoImage, vidDescription) {
-//   var pics = $('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>').hide().fadeIn(4000); 
-//   $('#search-results').append(pics); 
-//   $('#'+videoId).tipsy();
-// }
+
+$('#saved-results').click(function(event) {
+  var idVal = $(event.target).parent().attr('id');
+  socket.emit('url submit', idVal);
+  clickedSong = $(event.target).parent();
+});
 
 
 socket.on('url submit', function(idVal){
