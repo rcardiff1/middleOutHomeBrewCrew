@@ -8,6 +8,7 @@ function youtubeSearch(searchItem) {
     'type': 'GET',
     'data': {'searchItem': searchItem},
     }).done( function(data) {
+      $('#search-results').empty();
       $.each( data.items, function(i, item ) { 
         var vidId = item.id.videoId;
         var vidImage = item.snippet.thumbnails.medium.url; 
@@ -20,7 +21,8 @@ function youtubeSearch(searchItem) {
 
 // append youtube song list to left-side container 
 function appendVideoImage(videoId, videoImage, vidDescription) {
-  $('#search-results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>'); 
+  console.log(vidDescription);
+  $('#search-results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>');
   $('#'+videoId).tipsy();
 }
 
@@ -30,10 +32,6 @@ $('#search-btn').on('click', function(event) {
   youtubeSearch(searchVal);
 });
 
-// delete current youtube song list 
-$('#clear-search-btn').on('click', function() {
-  $('#search-results').empty();
-});
 
 // Movie Button Controls
 function muteVideo() {
