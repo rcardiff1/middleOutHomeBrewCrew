@@ -51,6 +51,7 @@ socket.on('url submit', function(idVal){
       'disablekb': 0
     }
   });
+  // console.log('playing in YTplayer', clickedSong);
   socket.player = player;
   socket.url = idVal;
   // console.log(player);

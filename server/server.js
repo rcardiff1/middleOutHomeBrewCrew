@@ -101,7 +101,7 @@ io.on('connection', function(socket) {
     io.emit('update-people', people);
     console.log(temp + ' has disconnected!');
   });
-
+  
   socket.on('url submit', function(idVal){
     io.emit('url submit', idVal);
     // console.log(people[socket.id] + ' has submitted a URL: ', url);
