@@ -156,9 +156,7 @@ socket.on('chat message', function(who,msg){
     var start = msg.indexOf('www.youtube.com/watch?v=')+24;
 
     if(start){
-      console.log(start);
       var youtubeUrlId = msg.substr(start, 11);
-      console.log(youtubeUrlId, "check this");
     }
 
     $('#messages').append($('<li>').html('<strong>' + who + ': ' + '</strong>' + linkifiedMsg));
