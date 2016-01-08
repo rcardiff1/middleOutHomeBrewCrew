@@ -24,6 +24,7 @@ function urlInjectFunc(url){
   socket.emit('url submit', url);
 }
 
+
 socket.on('url submit', function(url){
 $('#player').remove();
 $('.videoPlayer').append('<div id="player">');
