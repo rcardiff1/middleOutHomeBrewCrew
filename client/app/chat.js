@@ -23,19 +23,24 @@ $('#search-results').click(function(event) {
   clickedSong = $(event.target).parent();
 });
 
+//save to playlist
 $('#saveToPlaylist').on('click', function() {
   var songId = clickedSong.attr('id');
   var alreadySavedSongs = $('#saved-results').children().attr('id');
+  console.log('songId', songId);
+  console.log('alreadySavedSongs', alreadySavedSongs);
   
   //check if clickedSong exists in playlist
   if(songId !== alreadySavedSongs){
     var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
     $('#saved-results').append(playlistEntry);
+    return;
   } else {
-    alert('You\'ve already saved that song. Silly.' );
+    alert('You\'ve already saved that song. Silly.');
   }
-
 }); 
+
+//save to playlist
 
 $('#saved-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
@@ -68,7 +73,6 @@ $('#playVid').on('click', function() {
 
 socket.on('play video', function(){
   socket.player.playVideo();
-  // console.log(socket.player.getCurrentTime(), socket.url);
 });
 
 //pause video event
@@ -84,7 +88,6 @@ socket.on('pause video', function() {
 
 socket.on('new connection', function () {
 //this occurs before new player;
-console.log(!socket.player);
   if(!socket.player){
     return;
   }
