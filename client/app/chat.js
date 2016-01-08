@@ -42,9 +42,10 @@ socket.on('url submit', function(url) {
 $('#playVid').on('click', function() {
   socket.emit('play video');
 });
-socket.on('play video', function() {
+
+socket.on('play video', function(){
   socket.player.playVideo();
-  console.log(socket.player.getCurrentTime(), socket.url);
+  // console.log(socket.player.getCurrentTime(), socket.url);
 });
 
 //pause video event

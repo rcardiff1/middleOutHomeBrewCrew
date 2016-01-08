@@ -43,11 +43,20 @@
 }
 
 .videoPlayer {
-  width: 95.7%;
+  width: 640px;
   height: 360px;
   margin-top: 10px;
   margin-bottom: 5px;
   background-color: black;
+}
+
+.video-controls-style {
+  height: 38px;
+  width: 100px;
+  color: #ffffff;
+  background-color: #d9230f;
+  border: 1px solid #a91b0c;
+  border-radius: 4px;
 }
 
 .long{
@@ -55,25 +64,14 @@
 }
 
 #search-input-container {
-    height: 50px;
-    width: 95.7%;
- padding-left: 10px;
- padding-right: 10px;
- padding-top: 10px;
- margin-top: 10%;
- background-color: #fff;
- border: 1px solid #a91b0c ;
-}
-
-#search-input-container {
   height: 50px;
-  width: 95.7%;
+  width: 640px;;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
   margin-top: 10%;
   background-color: #fff;
-  border: 1px solid #a91b0c;
+  border: 1px solid #a91b0c ;
 }
 
 #youtubeSearchInput {
@@ -81,7 +79,17 @@
   height: 30px;
 }
 
-#search-results-container {
+#search-btn {
+  width: 140px;
+  margin-left: 1%;
+  height: 25px;
+  color: #ffffff;
+  background-color: #d9230f;
+  border: 1px solid #a91b0c;
+  border-radius: 4px;
+}
+
+#saved-search-results-container {
   height: 500px;
   width: 80%;
   margin-left: 10%;
@@ -90,22 +98,61 @@
   border: 1px solid #a91b0c;
 }
 
-#search-results {
-    height: 75%; 
-    overflow: scroll;
- margin-left: 25%;
+#show-saved-results-btn {
+  width: 40%;
+  margin-top: 10px;
+  margin-left: 10%;
+  color: #ffffff;
+  background-color: #d9230f;
+  border: 1px solid #a91b0c;
+  border-radius: 4px;
 }
 
-#clear-search-btn {
-    margin-left: 30%;
- margin-top: 6%;
+#show-searched-results-btn {
+  width: 40%;
+  margin-top: 10px;
+  color: #ffffff;
+  background-color: #d9230f;
+  border: 1px solid #a91b0c;
+  border-radius: 4px;
+}
+
+
+#saved-results-container {
+  height: 435px;
+  width: 90%;
+  margin: 5%;
+  background-color: #fff;
+  border: 1px solid #a91b0c;
+}
+
+#search-results-container {
+  height: 435px;
+  width: 90%;
+  margin: 5%;
+  background-color: #fff;
+  border: 1px solid #a91b0c;
+}
+
+#search-results {
+  height: 355px; 
+  overflow: scroll;
+  margin-left: 20%;
 }
 
 .line-break {
-  width: 95.7%;
+  width: 640px;
   border-bottom: 3px solid #a91b0c;
   margin-bottom: 18px;
   margin-top: 18px;
+}
+
+i {
+  padding-right: 10px;
+}
+
+.big-icon {
+  font-size: 25px;
 }
 
   /* For mobile phones: */

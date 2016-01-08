@@ -1,6 +1,7 @@
 <html >
   <head>
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/simplex/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/appStyle.css">
     <link rel="stylesheet" href="./lib/stylesheets/tipsy.css">
@@ -34,20 +35,30 @@
     <div class="row">
       <!-- search queries container -->
       <div class="col-sm-3">
-        <div id="search-results-container">
-          <h3 style="text-align: center;">Search Results:</h3>
-          <form id='urlID'>
-            <div id="search-results">
-            </div>
-          </form>
-          <button id="clear-search-btn" class="btn btn-primary">Clear Search</button>
+        <div id="saved-search-results-container">
+        <button id="show-saved-results-btn"><i class="fa fa-bookmark"></i>Saved</button>
+        <button id="show-searched-results-btn"><i class="fa fa-search"></i>Searched</button>
+          <div id="search-results-container">
+            <h3 style="text-align: center;">Searched Videos</h3>
+            <form id='urlID'>
+              <div id="search-results">
+              </div>
+            </form>
+          </div>
+          <div id="saved-results-container">
+            <h3 style="text-align: center;">Saved Videos</h3>
+            <form id='urlID'>
+              <div id="search-results">
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
       <div class='col-sm-6'>
         <div id="search-input-container">
           <input id='youTubeSearchInput' type="text" placeholder="Search Youtube Videos...">
-            <button id="search-btn" class="btn btn-primary">Search</button>
+            <button id="search-btn"><i class="fa fa-youtube-square"></i>Search</button>
           </input>
         </div>        
         <!-- YT API player -->
@@ -61,11 +72,10 @@
 
         <!-- Control Buttons -->
         <div id='playerControls'>
-          <button id="playVid" onclick="playVideo();" class="btn btn-primary">Play Video</button>
-          <button id="pauseVid" onclick="pauseVideo();" class="btn btn-primary">Pause Video</button>
-          <button id="muteVid" onclick="muteVideo();" class="btn btn-primary">Mute Video</button>
-          <button id="unmuteVid" onclick="unMuteVideo();" class="btn btn-primary">UnMute Video</button>
-          <input id="volume" type="number" step="1" min="0" max="100" value="100">
+          <button class="video-controls-style" id="playVid" onclick="playVideo();"><i class="fa fa-play-circle big-icon"></i></i></button>
+          <button class="video-controls-style" id="pauseVid" onclick="pauseVideo();"><i class="fa fa-pause-circle big-icon"></i></button>
+          <button class="video-controls-style" id="muteVid" onclick="muteVideo();"><i class="fa fa-volume-off big-icon"></i></button>
+          <button class="video-controls-style" id="unmuteVid" onclick="unMuteVideo();"><i class="fa fa-volume-up big-icon"></i></button>
           <img class="mute" id="muteImg" src='../assets/Mute.png'> 
         </div>
 
