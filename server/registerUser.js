@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var bycrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 
 var registerUser = new Schema({
