@@ -21,10 +21,8 @@ function youtubeSearch(searchItem) {
 
 // append youtube song list to left-side container 
 function appendVideoImage(videoId, videoImage, vidDescription) {
-  console.log(vidDescription);
-  $('#search-results').append('<p id="' + videoId + '"><img class="thisTestA" src="' + videoImage +'" original-title="'+vidDescription+'" height="70"></p>');
-  $('.thisTestA').tipsy();
-}
+  $('#search-results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>');
+  $('#'+videoId).tipsy();
 
 // search youtube button
 $('#search-btn').on('click', function(event) {
