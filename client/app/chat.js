@@ -20,11 +20,9 @@ $('#search-results').click(function(event) {
   socket.emit('url submit', idVal);
 });
 
-
 function urlInjectFunc(url){
   socket.emit('url submit', url);
 }
-
 
 socket.on('url submit', function(url){
 $('#player').remove();
@@ -163,7 +161,13 @@ socket.on('chat message', function(who,msg) {
     var start = msg.indexOf('www.youtube.com/watch?v=')+24;
 
     if(start){
+<<<<<<< HEAD
       var youtubeUrlId = msg.substr(start, 11);
+=======
+      console.log(start);
+      var youtubeUrlId = msg.substr(start, 11);
+      console.log(youtubeUrlId, "check this");
+>>>>>>> [Update] Links now show correctly in chat. When clicked they load the video in player
     }
 
     $('#messages').append($('<li>').html('<strong>' + who + ': ' + '</strong>' + linkifiedMsg));
