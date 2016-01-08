@@ -21,7 +21,6 @@ function youtubeSearch(searchItem) {
 function appendVideoImage(videoId, videoImage, vidDescription) {
   $('#search-results').append('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>'); 
   $('#'+videoId).tipsy();
-}
 
 // search youtube button
 $('#search-btn').on('click', function(event) {
