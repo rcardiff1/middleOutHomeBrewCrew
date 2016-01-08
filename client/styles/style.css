@@ -126,7 +126,7 @@
   border: 1px solid #a91b0c;
 }
 
-#search-results-container {
+#search-results-container, #saved-results-container {
   height: 435px;
   width: 90%;
   margin: 5%;
@@ -134,7 +134,7 @@
   border: 1px solid #a91b0c;
 }
 
-#search-results {
+#search-results, #saved-results {
   height: 355px; 
   overflow: scroll;
   margin-left: 20%;
