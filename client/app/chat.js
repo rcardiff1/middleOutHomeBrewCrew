@@ -27,9 +27,9 @@ $('#saveToPlaylist').on('click', function() {
   console.log('image', clickedSong.context.src);
   console.log('clickedSong', clickedSong);
   var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);  ;
-/************
-  // $('            ').append(playlistEntry);
-************/
+/***********/
+  $('#saved-results').append(playlistEntry);
+/***********/
   console.log('clickedSong', playlistEntry);
 
 }); 
