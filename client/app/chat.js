@@ -26,7 +26,11 @@ function urlInjectFunc(url){
 
 socket.on('url submit', function(url){
 $('#player').remove();
-$('.videoPlayer').append('<div id="player">');
+// set timeOut for playing new video
+ $('#disable-functionality').addClass('disableDiv');
+ setTimeout(function() {
+   $('#disable-functionality').removeClass('disableDiv');
+ }, 3500);$('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
     videoId : url,
     playerVars: { 
@@ -57,8 +61,6 @@ $('#pauseVid').on('click', function() {
 socket.on('pause video', function() {
   socket.player.pauseVideo();
 });
-
-
 
 socket.on('new connection', function () {
 //this occurs before new player;

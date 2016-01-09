@@ -147,6 +147,11 @@
   margin-top: 18px;
 }
 
+.disableDiv {
+   pointer-events: none;
+   opacity: 0.4;
+}
+
 i {
   padding-right: 10px;
 }
