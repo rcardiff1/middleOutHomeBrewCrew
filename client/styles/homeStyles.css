@@ -11,11 +11,11 @@ nav {
 .wallImage {
 	height: 750px;
 	width: 100%;
-	background: #55e6c5;
 	z-index: 1;
 }
 
 #homeJumbo {
+	color: #fff;
 	text-align: center;
 	margin: 0;
 	position: static;
@@ -26,8 +26,14 @@ nav {
 	color: white;
 }
 
+.watch-video-btn {
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
+  border-radius: 4px;
+}  
+
 #wall_1 {
-	background: url(../../assets/background-image.jpg) repeat;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-position: center;

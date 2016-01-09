@@ -54,19 +54,6 @@ $('#saveToPlaylist').on('click', function() {
   }
 }); 
 
-//delete from playlist
-// $('#removeFromPlaylist').on('click', function() {  
-//   var songId = clickedSong.attr('id');
-//   var alreadySavedSongs = $('#saved-results').children().attr('id');
-//   if(songId === alreadySavedSongs){
-//     // console.log('songId', songId);
-//     $('<div id="' + alreadySavedSongs+ '">').remove();
-//     console.log('alreadySavedSongs', $('div[id="'+ alreadySavedSongs +'"]'));
-//     console.log('alreadySavedSongs', $('<div id="' + alreadySavedSongs+ '">'));
-//     // $('#saved-results').children().attr('id').remove();
-//   }
-// });
-
 
 $('#saved-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
@@ -76,6 +63,11 @@ $('#saved-results').click(function(event) {
 
 socket.on('url submit', function(idVal){
   $('#player').remove();
+  // set timeOut for playing new video
+  $('#disable-functionality').addClass('disableDiv');
+  setTimeout(function() {
+    $('#disable-functionality').removeClass('disableDiv');
+  }, 3500);
   $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
     videoId : idVal,
@@ -87,7 +79,6 @@ socket.on('url submit', function(idVal){
   });
   socket.player = player;
   socket.url = idVal;
-  // console.log(player);
 });
 
 //play video event
