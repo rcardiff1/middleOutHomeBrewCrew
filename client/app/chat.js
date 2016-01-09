@@ -28,30 +28,51 @@ function urlInjectFunc(url){
 }
 
 socket.on('url submit', function(url){
-$('#player').remove();
-// set timeOut for playing new video
- $('#disable-functionality').addClass('disableDiv');
- setTimeout(function() {
+  $('#player').remove();
+  $('.videoPlayer').append('<div id="player">');
+  // set timeOut for playing new video
+  $('#disable-functionality').addClass('disableDiv');
+  setTimeout(function() {
    $('#disable-functionality').removeClass('disableDiv');
- }, 3500);$('.videoPlayer').append('<div id="player">');
+  }, 3500);
+});
 
-
+//save to playlist
 $('#saveToPlaylist').on('click', function() {
-  console.log('image', clickedSong.context.src);
-  console.log('clickedSong', clickedSong);
-  var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);  ;
-/************
-  // $('            ').append(playlistEntry);
-************/
-  console.log('clickedSong', playlistEntry);
-
+  var songId = clickedSong.attr('id');
+  var alreadySavedSongs = $('#saved-results').children().attr('id');
+  console.log('songId', songId);
+  console.log('alreadySavedSongs', alreadySavedSongs);
+  
+  //check if clickedSong exists in playlist
+  if(songId !== alreadySavedSongs){
+    var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
+    $('#saved-results').append(playlistEntry);
+    return;
+  } else {
+    alert('You\'ve already saved that song. Silly.');
+  }
 }); 
-// function appendPlaylist(videoId, videoImage, vidDescription) {
-//   var pics = $('<p id="' + videoId + '" original-title="'+vidDescription+'"><img src="' + videoImage +'" height="70"></p>').hide().fadeIn(4000); 
-//   $('#search-results').append(pics); 
-//   $('#'+videoId).tipsy();
-// }
 
+//delete from playlist
+// $('#removeFromPlaylist').on('click', function() {  
+//   var songId = clickedSong.attr('id');
+//   var alreadySavedSongs = $('#saved-results').children().attr('id');
+//   if(songId === alreadySavedSongs){
+//     // console.log('songId', songId);
+//     $('<div id="' + alreadySavedSongs+ '">').remove();
+//     console.log('alreadySavedSongs', $('div[id="'+ alreadySavedSongs +'"]'));
+//     console.log('alreadySavedSongs', $('<div id="' + alreadySavedSongs+ '">'));
+//     // $('#saved-results').children().attr('id').remove();
+//   }
+// });
+
+
+$('#saved-results').click(function(event) {
+  var idVal = $(event.target).parent().attr('id');
+  socket.emit('url submit', idVal);
+  clickedSong = $(event.target).parent();
+});
 
 socket.on('url submit', function(idVal){
   $('#player').remove();
@@ -76,7 +97,6 @@ $('#playVid').on('click', function() {
 
 socket.on('play video', function(){
   socket.player.playVideo();
-  // console.log(socket.player.getCurrentTime(), socket.url);
 });
 
 //pause video event

@@ -45,7 +45,7 @@
             <div id="saved-results-container">
               <h3 style="text-align: center;">Saved Videos</h3>
               <form id='urlID'>
-                <div id="search-results">
+                <div id="saved-results">
                 </div>
               </form>
             </div>
@@ -67,12 +67,15 @@
         <div class="line-break"></div>
         <!-- Control Buttons -->
         <div id='playerControls'>
+          <button class="video-controls-style" id="saveToPlaylist" onclick="saveToPlaylist();"><i class="fa fa-bookmark big-icon"></i>save</button>
+          <!-- <button class="video-controls-style" id="removeFromPlaylist"><i class="fa fa-bookmark big-icon"></i>remove</button> -->
+
           <button class="video-controls-style" id="playVid" onclick="playVideo();"><i class="fa fa-play-circle big-icon"></i></i></button>
           <button class="video-controls-style" id="pauseVid" onclick="pauseVideo();"><i class="fa fa-pause-circle big-icon"></i></button>
           <button class="video-controls-style" id="muteVid" onclick="muteVideo();"><i class="fa fa-volume-off big-icon"></i></button>
           <button class="video-controls-style" id="unmuteVid" onclick="unMuteVideo();"><i class="fa fa-volume-up big-icon"></i></button>
-          <img class="mute" id="muteImg" src='../assets/Mute.png'> 
-          <button id="saveToPlaylist" onclick="saveToPlaylist();" class="btn btn-primary">Save video</button>
+          <!-- <img class="mute" id="muteImg" src='../assets/Mute.png'>  -->
+
         </div>
         <br>
       </div>
@@ -108,6 +111,6 @@
     <script src="env/config.js"></script>
     <script src="app/app.js"></script>
     <script src='app/chat.js'></script>
-    <script src="./lib/anchorme.js/anchorme.min.js"></script>
+    <!-- // <script src="./lib/anchorme.js/anchorme.min.js"></script> -->
   </body>
 </html>
