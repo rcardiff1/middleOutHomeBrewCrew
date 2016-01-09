@@ -1,35 +1,47 @@
-#m {
-    width: 100%;
+h3,h2 {
+  text-align: center;
 }
 
 #room {
-    color: #000000 ;
-    font-family: verdana;
+  color: #000000 ;
+  font-family: verdana;
 }
 
 #messages {
-    list-style-type: none;
-    color: #000000 ;
-    font-family: verdana;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-height: 75%;
-    min-height: 75%;
-    overflow: auto;
-    float: right;
+  list-style-type: none;
+  color: #000000 ;
+  font-family: verdana;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-height: 75%;
+  min-height: 75%;
+  overflow: auto;
+  float: right;
 }
 #messages li {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 #messages li:nth-child(odd) {
-    background: #FAEBD7 ;
+  background: #09a3ed;
 }
 
 #messageDiv {
-    border-left: 1px solid black;
-    padding: 5%;
-    height: 100%;
+  padding: 5%;
+  height: 85%;
+}
+
+#send-chat-btn {
+  height: 25px;
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
+  border-radius: 4px;
+}
+
+.side-border {
+  height: 100%;
+  border-right: 1px solid #32b7f7;
 }
 
 * {
@@ -37,9 +49,9 @@
 }
 
 .row:after {
-   content: "";
-   clear: both;
-   display: block;
+  content: "";
+  clear: both;
+  display: block;
 }
 
 .videoPlayer {
@@ -51,16 +63,16 @@
 }
 
 .video-controls-style {
-  height: 38px;
+  height: 35px;
   width: 100px;
-  color: #ffffff;
-  background-color: #d9230f;
-  border: 1px solid #a91b0c;
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
   border-radius: 4px;
 }
 
 .long{
-    width: 100%;
+  width: 100%;
 }
 
 #search-input-container {
@@ -71,21 +83,26 @@
   padding-top: 10px;
   margin-top: 10%;
   background-color: #fff;
-  border: 1px solid #a91b0c ;
+  border: 2px solid #32b7f7;
 }
 
 #youtubeSearchInput {
   width: 75%;
   height: 30px;
+  border: 1px solid #32b7f7;
+  border-radius: 4px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: #444444;
 }
 
 #search-btn {
   width: 140px;
   margin-left: 1%;
   height: 25px;
-  color: #ffffff;
-  background-color: #d9230f;
-  border: 1px solid #a91b0c;
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
   border-radius: 4px;
 }
 
@@ -95,25 +112,25 @@
   margin-left: 10%;
   margin-top: 20%;
   background-color: #fff;
-  border: 1px solid #a91b0c;
+  border: 2px solid #32b7f7;
 }
 
 #show-saved-results-btn {
   width: 40%;
   margin-top: 10px;
   margin-left: 10%;
-  color: #ffffff;
-  background-color: #d9230f;
-  border: 1px solid #a91b0c;
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
   border-radius: 4px;
 }
 
 #show-searched-results-btn {
   width: 40%;
   margin-top: 10px;
-  color: #ffffff;
-  background-color: #d9230f;
-  border: 1px solid #a91b0c;
+  color: #fff;
+  background-color: #09a3ed;
+  border: 1px solid #32b7f7;
   border-radius: 4px;
 }
 
@@ -123,7 +140,7 @@
   width: 90%;
   margin: 5%;
   background-color: #fff;
-  border: 1px solid #a91b0c;
+  border: 1px solid #32b7f7;
 }
 
 #search-results-container, #saved-results-container {
@@ -131,7 +148,7 @@
   width: 90%;
   margin: 5%;
   background-color: #fff;
-  border: 1px solid #a91b0c;
+  border: 1px solid #32b7f7;
 }
 
 #search-results, #saved-results {
@@ -142,7 +159,7 @@
 
 .line-break {
   width: 640px;
-  border-bottom: 3px solid #a91b0c;
+  border-bottom: 1px solid #32b7f7;
   margin-bottom: 18px;
   margin-top: 18px;
 }

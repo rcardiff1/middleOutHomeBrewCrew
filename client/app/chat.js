@@ -54,19 +54,6 @@ $('#saveToPlaylist').on('click', function() {
   }
 }); 
 
-//delete from playlist
-// $('#removeFromPlaylist').on('click', function() {  
-//   var songId = clickedSong.attr('id');
-//   var alreadySavedSongs = $('#saved-results').children().attr('id');
-//   if(songId === alreadySavedSongs){
-//     // console.log('songId', songId);
-//     $('<div id="' + alreadySavedSongs+ '">').remove();
-//     console.log('alreadySavedSongs', $('div[id="'+ alreadySavedSongs +'"]'));
-//     console.log('alreadySavedSongs', $('<div id="' + alreadySavedSongs+ '">'));
-//     // $('#saved-results').children().attr('id').remove();
-//   }
-// });
-
 
 $('#saved-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
@@ -92,7 +79,6 @@ socket.on('url submit', function(idVal){
   });
   socket.player = player;
   socket.url = idVal;
-  // console.log(player);
 });
 
 //play video event
