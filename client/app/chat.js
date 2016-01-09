@@ -1,10 +1,11 @@
-// Chat Socket
 var socket = io();
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+//declare a global for our playlist
+var clickedSong;
 
 //doesn't allow users to interact w/ submissions until "signed in"
 $('#chatForm').hide();
@@ -18,6 +19,8 @@ $('#playerControls').hide();
 $('#search-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
   socket.emit('url submit', idVal);
+
+  clickedSong = $(event.target).parent();
 });
 
 function urlInjectFunc(url){
@@ -25,14 +28,57 @@ function urlInjectFunc(url){
 }
 
 socket.on('url submit', function(url){
-$('#player').remove();
-// set timeOut for playing new video
- $('#disable-functionality').addClass('disableDiv');
- setTimeout(function() {
+  $('#player').remove();
+  $('.videoPlayer').append('<div id="player">');
+  // set timeOut for playing new video
+  $('#disable-functionality').addClass('disableDiv');
+  setTimeout(function() {
    $('#disable-functionality').removeClass('disableDiv');
- }, 3500);$('.videoPlayer').append('<div id="player">');
+  }, 3500);
+});
+
+//save to playlist
+$('#saveToPlaylist').on('click', function() {
+  var songId = clickedSong.attr('id');
+  var alreadySavedSongs = $('#saved-results').children().attr('id');
+  console.log('songId', songId);
+  console.log('alreadySavedSongs', alreadySavedSongs);
+  
+  //check if clickedSong exists in playlist
+  if(songId !== alreadySavedSongs){
+    var playlistEntry =$('<p id="' + clickedSong.attr('id') + '"><img src="' + clickedSong.context.src +'" height="70"></p>').hide().fadeIn(4000);
+    $('#saved-results').append(playlistEntry);
+    return;
+  } else {
+    alert('You\'ve already saved that song. Silly.');
+  }
+}); 
+
+//delete from playlist
+// $('#removeFromPlaylist').on('click', function() {  
+//   var songId = clickedSong.attr('id');
+//   var alreadySavedSongs = $('#saved-results').children().attr('id');
+//   if(songId === alreadySavedSongs){
+//     // console.log('songId', songId);
+//     $('<div id="' + alreadySavedSongs+ '">').remove();
+//     console.log('alreadySavedSongs', $('div[id="'+ alreadySavedSongs +'"]'));
+//     console.log('alreadySavedSongs', $('<div id="' + alreadySavedSongs+ '">'));
+//     // $('#saved-results').children().attr('id').remove();
+//   }
+// });
+
+
+$('#saved-results').click(function(event) {
+  var idVal = $(event.target).parent().attr('id');
+  socket.emit('url submit', idVal);
+  clickedSong = $(event.target).parent();
+});
+
+socket.on('url submit', function(idVal){
+  $('#player').remove();
+  $('.videoPlayer').append('<div id="player">');
   var player = new YT.Player('player', {
-    videoId : url,
+    videoId : idVal,
     playerVars: { 
       'autoplay': 0, 
       'controls': 0, 
@@ -40,7 +86,8 @@ $('#player').remove();
     }
   });
   socket.player = player;
-  socket.url = url;;
+  socket.url = idVal;
+  // console.log(player);
 });
 
 //play video event
@@ -50,7 +97,6 @@ $('#playVid').on('click', function() {
 
 socket.on('play video', function(){
   socket.player.playVideo();
-  // console.log(socket.player.getCurrentTime(), socket.url);
 });
 
 //pause video event

@@ -49,6 +49,7 @@ app.get('/searchYoutube', function(req, res) {
       console.log(error);
     }
     else {
+      console.log(result);
       res.send(result);
     }
   });
@@ -72,8 +73,8 @@ socketServer.listen((process.env.PORT || 4000), function() {
 io.on('connection', function(socket) {
   //start video socket
   io.emit('new connection');
-  socket.on('new connection res', function(obj) {
-    //passing the end of the url to new connection res
+
+  socket.on('new connection res', function(obj){
     io.emit('new connection res', obj);
   });
   
@@ -100,15 +101,15 @@ io.on('connection', function(socket) {
     io.emit('update-people', people);
     console.log(temp + ' has disconnected!');
   });
-
-  socket.on('url submit', function(url){
-    io.emit('url submit', url);
-    console.log(people[socket.id] + ' has submitted a URL: ', url);
+  
+  socket.on('url submit', function(idVal){
+    io.emit('url submit', idVal);
+    // console.log(people[socket.id] + ' has submitted a URL: ', url);
   });
-  socket.on('play video', function() {
+  socket.on('play video', function(){
     io.emit('play video');
   });
-  socket.on('pause video', function() {
+  socket.on('pause video', function(){
     io.emit('pause video');
   });
 });
