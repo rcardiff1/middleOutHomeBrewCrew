@@ -1,6 +1,4 @@
 server/node_modules/*
-client/lib/*
-!client/lib/anchorme.js/*
 node_modules/*
 
 
