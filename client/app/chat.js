@@ -40,7 +40,19 @@ $('#saveToPlaylist').on('click', function() {
   }
 }); 
 
-//save to playlist
+//delete from playlist
+// $('#removeFromPlaylist').on('click', function() {  
+//   var songId = clickedSong.attr('id');
+//   var alreadySavedSongs = $('#saved-results').children().attr('id');
+//   if(songId === alreadySavedSongs){
+//     // console.log('songId', songId);
+//     $('<div id="' + alreadySavedSongs+ '">').remove();
+//     console.log('alreadySavedSongs', $('div[id="'+ alreadySavedSongs +'"]'));
+//     console.log('alreadySavedSongs', $('<div id="' + alreadySavedSongs+ '">'));
+//     // $('#saved-results').children().attr('id').remove();
+//   }
+// });
+
 
 $('#saved-results').click(function(event) {
   var idVal = $(event.target).parent().attr('id');
