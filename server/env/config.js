@@ -1,4 +1,2 @@
 // Youtube API Key
-var YOUTUBE_API_KEY = 'AIzaSyCyU-0og7E6Sa1RpPr2OZrYKe2jYLGRuxI';
-
 module.exports.YOUTUBE_API_KEY = YOUTUBE_API_KEY;
