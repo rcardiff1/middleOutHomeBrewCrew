@@ -1,7 +1,5 @@
 server/node_modules/*
 node_modules/*
 
-
 ## API keys
 server/env/*
-client/env/*
