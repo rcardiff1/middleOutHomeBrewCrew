@@ -9,9 +9,9 @@ var people = {};
 var YouTube = require('youtube-node');
 var youTube = new YouTube();
 
-if(!process.env.DEPLOYED) {
-  var config = require('./env/config.js');
-}
+// if(!process.env.DEPLOYED) {
+//   var config = require('./env/config.js');
+// }
 
 var mongoose = require('mongoose');
 var passport = require('passport');
